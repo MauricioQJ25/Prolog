@@ -7,14 +7,21 @@ valid_triangle(X, Y, Z) :-
     X > 0, Y > 0, Z > 0,
     X + Y > Z, X + Z > Y, Y + Z > X.
 
+euilateral(X, Y, Z) :-
+    X =:= Y, X =:= Z, Y =:= Z.
+
+scalene(X, Y, Z) :-
+     \+ (X = Y), \+ (X = Z), \+ (Y = Z).
+
+
 triangle(X, Y, Z) :-
     valid_triangle(X, Y, Z),
-    X =:= Y, X =:= Z, Y =:= Z,
+    euilateral(X, Y, Z),
     write('triangule is equilateral').
 
 triangle(X, Y, Z) :-
     valid_triangle(X, Y, Z),
-    \+ (X = Y), \+ (X = Z), \+ (Y = Z),
+    scalene(X, Y, Z),
     write('triangule is scalene').
 
 triangle(X, Y, Z) :-
