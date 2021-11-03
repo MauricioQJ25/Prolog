@@ -13,10 +13,10 @@
 
 % Lets represent a tree with a list where n is the root and 2n +1 right member, 2n + 2 left member
 
-%        1            // level  1
-%    2       3        // level  2
-%  4   5    6  7      // level  3
-% 8 9 a b  c d e f    // level  4
+%        1            // level  1 1
+%    2       3        // level  2 3  +2
+%  4   5    6  7      // level  3 7  +4
+% 8 9 a b  c d e f    // level  4 15 +8
 
 % Valid trees
 
@@ -39,3 +39,14 @@ x_memb_tree(X, tree(I,R,D)) :-
     ;  format('~w belongs to a valid tree ', [X])
     ).
 
+
+% nods_arb(Tree, N) : N is the number of members in the tree Tree
+% All valid trees are completed, 
+% valid tree should has 3, 7, or 15 nodes. 
+
+nods_arb(tree(I,R,D), N) :-
+    tree(I,R,D),
+    ( nods_arb(I, P)
+    -> N is 2*P+1
+    ;  N is 3
+    ).
