@@ -9,7 +9,7 @@ sumamatriz([X],[Y],[SF]) :- sumaFila(X,Y,SF).
 
 %% This is the support function that adds both matrix by adding row by row.
 sumamatriz2([],[],[]).
-sumamatriz2([X|Xs],[Y|Ys], [SF|SFs]) :- sumaFila(X, Y, SF), sumamatriz(Xs,Ys,SFs).
+sumamatriz2([X|Xs],[Y|Ys], [SF|SFs]) :- sumaFila(X, Y, SF), sumamatriz2(Xs,Ys,SFs).
 sumamatriz2([X],[Y],[SF]) :- sumaFila(X,Y,SF).
 
 %% This function adds the n element of each list.
